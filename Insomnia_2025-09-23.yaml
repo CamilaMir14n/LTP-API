@@ -1,0 +1,424 @@
+type: collection.insomnia.rest/5.0
+name: API PJI Artistick _ v2
+meta:
+  id: wrk_91c5d13104034e69a9bb915d9ff1dd26
+  created: 1758657968063
+  modified: 1758657995851
+  description: ""
+collection:
+  - name: Usuarios
+    meta:
+      id: fld_25e2ab62fa9948abab85d2c5284bf093
+      created: 1758658037243
+      modified: 1758664834647
+      sortKey: -1758658037243
+      description: ""
+    children:
+      - url: "{{ _.url }}/usuarios"
+        name: adiciona usuario
+        meta:
+          id: req_5f682f585ce946329e4fd92e2285a6cd
+          created: 1758660970428
+          modified: 1758664839587
+          isPrivate: false
+          description: ""
+          sortKey: -1758664839503
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "João",
+              "email": "joao@email.com",
+              "senha": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios"
+        name: lista usuarios
+        meta:
+          id: req_d406f2821667435f99ac8409b4e530f0
+          created: 1758663205902
+          modified: 1758664851697
+          isPrivate: false
+          description: ""
+          sortKey: -1758664839353
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios/1"
+        name: busca usuario por id
+        meta:
+          id: req_7855b13be4de412da087087f03ee6b28
+          created: 1758663258354
+          modified: 1758664843705
+          isPrivate: false
+          description: ""
+          sortKey: -1758664839403
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios/1"
+        name: atualiza usuario por id
+        meta:
+          id: req_eef7e9559fef41df826f9e1ffdbf0403
+          created: 1758663301544
+          modified: 1758664846397
+          isPrivate: false
+          description: ""
+          sortKey: -1758664839303
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Maria",
+              "email": "maria@email.com",
+              "senha": "654321"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios/1"
+        name: deleta usuario
+        meta:
+          id: req_a6756d700203460d9683ba180163d041
+          created: 1758663670229
+          modified: 1758681655912
+          isPrivate: false
+          description: ""
+          sortKey: -1758664839203
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Filhos
+    meta:
+      id: fld_826bee7a52514953879f7be48029f8f8
+      created: 1758670189076
+      modified: 1758670189076
+      sortKey: -1758670189076
+      description: ""
+    children:
+      - url: "{{ _.url }}/filhos"
+        name: adicionar filho
+        meta:
+          id: req_bdc11c5f13464d278cd9c673e6125c61
+          created: 1758670194215
+          modified: 1758670822688
+          isPrivate: false
+          description: ""
+          sortKey: -1758670336159
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Iago",
+              "idade": 9,
+              "usuario_id": 2
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/filhos?usuario=2"
+        name: listar filhos por id usuario
+        meta:
+          id: req_804901ef1b534402ae6a45e24fe37e03
+          created: 1758670364546
+          modified: 1758670524369
+          isPrivate: false
+          description: ""
+          sortKey: -1758670335959
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/filhos/1"
+        name: buscar filho por id
+        meta:
+          id: req_a1b7bc342f2c497eb3687436e3237590
+          created: 1758670531039
+          modified: 1758670718670
+          isPrivate: false
+          description: ""
+          sortKey: -1758670336059
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/filhos/1"
+        name: atualizar filho
+        meta:
+          id: req_72be2bef9f5b49439686365307261ed7
+          created: 1758670738274
+          modified: 1758671310139
+          isPrivate: false
+          description: ""
+          sortKey: -1758670335809
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Maria Clara",
+              "idade": 9,
+              "usuario_id": 2
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/filhos/1"
+        name: remover filho por id
+        meta:
+          id: req_0d11d5495bc64c35a27e39921b04239f
+          created: 1758671281224
+          modified: 1758671328515
+          isPrivate: false
+          description: ""
+          sortKey: -1758670335709
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Atividades
+    meta:
+      id: fld_d4a81fa16cba4aa597aa6eae6982d886
+      created: 1758671696520
+      modified: 1758671696520
+      sortKey: -1758671696520
+      description: ""
+    children:
+      - url: "{{ _.url }}/atividades"
+        name: criar atividade
+        meta:
+          id: req_b221f1de314e476fbd940e10dbb73926
+          created: 1758671704996
+          modified: 1758672975632
+          isPrivate: false
+          description: ""
+          sortKey: -1758672973573
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"titulo": "Ler um livro",
+              "descricao": "Leia um livro de sua estante e depois faça um resumo do que você entendeu",
+              "filho_id": 2,
+              "data": "2025-09-23"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/atividades"
+        name: listar atividades
+        meta:
+          id: req_107105cea84b4b96b73c38a415766c49
+          created: 1758671977785
+          modified: 1758672979420
+          isPrivate: false
+          description: ""
+          sortKey: -1758672973623
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/atividades/1"
+        name: buscar atividade por id
+        meta:
+          id: req_ba01759b8f62421ea93155768811297f
+          created: 1758672022671
+          modified: 1758672973732
+          isPrivate: false
+          description: ""
+          sortKey: -1758672973673
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/atividades/1"
+        name: atualizar atividade por id
+        meta:
+          id: req_d24be95bf01044f3a58e420f7383998b
+          created: 1758672273708
+          modified: 1758681407640
+          isPrivate: false
+          description: ""
+          sortKey: -1758672973773
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"titulo": "Ler um livro",
+              "descricao": "Leia dois livros de sua estante e faça dois resumos de cada um mostrando o que você achou do livro",
+              "filho_id": 2,
+              "data": "2025-09-24"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/atividades/1"
+        name: deletar atividade
+        meta:
+          id: req_5691e330494540c69a438b634e7aadfb
+          created: 1758672951134
+          modified: 1758681417213
+          isPrivate: false
+          description: ""
+          sortKey: -1758672973873
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_289d2a5807d79e6d3c1966e76c2e05f0cdea1e81
+    created: 1758657968079
+    modified: 1758657968079
+environments:
+  name: Base Environment
+  meta:
+    id: env_289d2a5807d79e6d3c1966e76c2e05f0cdea1e81
+    created: 1758657968072
+    modified: 1758660957299
+    isPrivate: false
+  data:
+    url: http://127.0.0.1:5000
