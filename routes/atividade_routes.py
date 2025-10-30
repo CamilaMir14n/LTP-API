@@ -1,9 +1,11 @@
 from flask import Blueprint, request, jsonify
 from services.atividade_service import AtividadeService
+from flask_jwt_extended import jwt_required
 
 atividade_bp = Blueprint('atividades', __name__)
 
 @atividade_bp.route('/atividades', methods=['POST'])
+@jwt_required()
 def criar_atividade():
     data = request.get_json()
     filho_id = data.get('filho_id')
@@ -18,6 +20,7 @@ def criar_atividade():
     return jsonify(atividade.to_dict()), 201
 
 @atividade_bp.route('/atividades', methods=['GET'])
+@jwt_required()
 def listar_atividades():
     filho_id = request.args.get('filho')
     if filho_id:
@@ -29,6 +32,7 @@ def listar_atividades():
 
 # GET por ID
 @atividade_bp.route('/atividades/<int:id>', methods=['GET'])
+@jwt_required()
 def buscar_atividade(id):
     a = AtividadeService.buscar_atividade(id)
     if not a:
@@ -37,6 +41,7 @@ def buscar_atividade(id):
 
 # PUT - Atualizar atividade
 @atividade_bp.route('/atividades/<int:id>', methods=['PUT'])
+@jwt_required()
 def atualizar_atividade(id):
     data = request.get_json()
     filho_id = data.get('filho_id')
@@ -54,6 +59,7 @@ def atualizar_atividade(id):
 
 # DELETE - Remover atividade
 @atividade_bp.route('/atividades/<int:id>', methods=['DELETE'])
+@jwt_required()
 def deletar_atividade(id):
     sucesso, err = AtividadeService.deletar_atividade(id)
     if err == "ATI404":

@@ -1,19 +1,21 @@
 from flask import Blueprint, request, jsonify
 from services.usuario_service import UsuarioService
+from flask_jwt_extended import jwt_required   # ✅ import necessário
 
 usuario_bp = Blueprint('usuarios', __name__)
 
 # DELETE - Remover usuário
 @usuario_bp.route('/usuarios/<int:id>', methods=['DELETE'])
+@jwt_required()
 def deletar_usuario(id):
     sucesso, err = UsuarioService.deletar_usuario(id)
     if err == "USR404":
         return jsonify({"error": err, "message": "Usuário não encontrado"}), 404
     return jsonify({"message": "Usuário deletado com sucesso"}), 200
-from flask import Blueprint, request, jsonify
-from services.usuario_service import UsuarioService
+
 
 @usuario_bp.route('/usuarios', methods=['POST'])
+@jwt_required()
 def criar_usuario():
     data = request.get_json()
     nome = data.get('nome')
@@ -25,12 +27,16 @@ def criar_usuario():
         return jsonify({"error": err, "message": "Email já cadastrado"}), 400
     return jsonify(usuario.to_dict()), 201
 
+
 @usuario_bp.route('/usuarios', methods=['GET'])
+@jwt_required()
 def listar_usuarios():
     usuarios = UsuarioService.listar_usuarios()
     return jsonify([u.to_dict() for u in usuarios]), 200
 
+
 @usuario_bp.route('/usuarios/<int:id>', methods=['GET'])
+@jwt_required()
 def buscar_usuario(id):
     u = UsuarioService.buscar_usuario(id)
     if not u:
@@ -40,6 +46,7 @@ def buscar_usuario(id):
 
 # PUT - Atualizar usuário
 @usuario_bp.route('/usuarios/<int:id>', methods=['PUT'])
+@jwt_required()
 def atualizar_usuario(id):
     data = request.get_json()
     nome = data.get('nome')

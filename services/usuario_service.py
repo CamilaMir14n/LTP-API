@@ -4,12 +4,13 @@ from models.usuario import Usuario
 
 class UsuarioService:
     @staticmethod
-    def criar_usuario(nome, email):
-        uid, err = UsuarioDAO.criar(nome, email)
+    def criar_usuario(nome, email, password):
+        uid, err = UsuarioDAO.criar(nome, email, password)
         if err:
             return None, err
-        usuario = Usuario(uid, nome, email)
+        usuario = Usuario(uid, nome, email, password)
         return usuario, None
+
 
     @staticmethod
     def listar_usuarios():

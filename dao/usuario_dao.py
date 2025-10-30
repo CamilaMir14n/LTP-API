@@ -4,16 +4,26 @@ from models.usuario import Usuario
 
 class UsuarioDAO:
     @staticmethod
-    def criar(nome, email):
+    def criar(nome, email, password):
         conn = get_connection()
         cur = conn.cursor()
         cur.execute("SELECT id FROM usuarios WHERE email = ?", (email,))
         if cur.fetchone():
             return None, "USR001"
-        cur.execute("INSERT INTO usuarios (nome, email) VALUES (?, ?)", (nome, email))
+        cur.execute("INSERT INTO usuarios (nome, email, password) VALUES (?, ?, ?)", (nome, email,  password))
         conn.commit()
         uid = cur.lastrowid
         return uid, None
+
+    @staticmethod
+    def buscar_por_email(email):
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT id, nome, email, password FROM usuarios WHERE email = ?", (email,))
+        r = cur.fetchone()
+        if not r:
+            return None
+        return Usuario(r["id"], r["nome"], r["email"], r["password"])
 
     @staticmethod
     def listar_todos():

@@ -7,7 +7,8 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    email TEXT NOT NULL UNIQUE
+    email TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS filhos (

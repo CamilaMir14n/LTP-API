@@ -1,0 +1,110 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-10-29T00:00:00.000Z",
+  "__export_source": "artistick_api_auth",
+  "resources": [
+    {
+      "_id": "__WORKSPACE__",
+      "_type": "workspace",
+      "name": "Artistick API - Autenticação JWT"
+    },
+    {
+      "_id": "req_register_user",
+      "_type": "request",
+      "parentId": "__WORKSPACE__",
+      "name": "Registrar Usuário (/auth/register)",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/auth/register",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"nome\": \"Camila\", \"email\": \"camila@ifsp.edu.br\", \"password\": \"123456\"}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "_id": "req_login_wrong",
+      "_type": "request",
+      "parentId": "__WORKSPACE__",
+      "name": "Login com Senha Incorreta (/auth/login)",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"email\": \"camila@ifsp.edu.br\", \"password\": \"senha_errada\"}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "_id": "req_login_correct",
+      "_type": "request",
+      "parentId": "__WORKSPACE__",
+      "name": "Login Correto (/auth/login)",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"email\": \"camila@ifsp.edu.br\", \"password\": \"123456\"}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "_id": "req_protected_no_token",
+      "_type": "request",
+      "parentId": "__WORKSPACE__",
+      "name": "Acesso sem Token (/usuarios)",
+      "method": "GET",
+      "url": "http://127.0.0.1:5000/usuarios",
+      "headers": []
+    },
+    {
+      "_id": "req_protected_with_token",
+      "_type": "request",
+      "parentId": "__WORKSPACE__",
+      "name": "Acesso com Token (/usuarios)",
+      "method": "GET",
+      "url": "http://127.0.0.1:5000/usuarios",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ access_token }}" }
+      ]
+    },
+    {
+      "_id": "req_logout",
+      "_type": "request",
+      "parentId": "__WORKSPACE__",
+      "name": "Logout (/auth/logout)",
+      "method": "POST",
+      "url": "http://127.0.0.1:5000/auth/logout",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ access_token }}" }
+      ]
+    },
+    {
+      "_id": "req_reuse_token",
+      "_type": "request",
+      "parentId": "__WORKSPACE__",
+      "name": "Teste Token Revogado (/usuarios)",
+      "method": "GET",
+      "url": "http://127.0.0.1:5000/usuarios",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ access_token }}" }
+      ]
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "parentId": "__WORKSPACE__",
+      "name": "Base Environment",
+      "data": {
+        "url": "http://127.0.0.1:5000",
+        "access_token": ""
+      }
+    }
+  ]
+}

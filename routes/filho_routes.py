@@ -1,9 +1,11 @@
 from flask import Blueprint, request, jsonify
 from services.filho_service import FilhoService
+from flask_jwt_extended import jwt_required   # ✅ import necessário
 
 filho_bp = Blueprint('filhos', __name__)
 
 @filho_bp.route('/filhos', methods=['POST'])
+@jwt_required()
 def criar_filho():
     data = request.get_json()
     usuario_id = data.get('usuario_id')
@@ -16,7 +18,9 @@ def criar_filho():
         return jsonify({"error": err, "message": "Usuário inválido"}), 400
     return jsonify(filho.to_dict()), 201
 
+
 @filho_bp.route('/filhos', methods=['GET'])
+@jwt_required()
 def listar_filhos():
     usuario_id = request.args.get('usuario')
     if usuario_id:
@@ -24,7 +28,9 @@ def listar_filhos():
         return jsonify([f.to_dict() for f in filhos]), 200
     return jsonify({"error": "FIL003", "message": "Parâmetro usuario é necessário"}), 400
 
+
 @filho_bp.route('/filhos/<int:id>', methods=['GET'])
+@jwt_required()
 def buscar_filho(id):
     f = FilhoService.buscar_filho(id)
     if not f:
