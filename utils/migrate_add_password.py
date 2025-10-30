@@ -2,6 +2,7 @@ import sqlite3
 import bcrypt
 import os
 
+# Caminho para o banco SQLite (ajuste se o nome for diferente)
 DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'artistick.db')
 
 def column_exists(conn, table, column):
