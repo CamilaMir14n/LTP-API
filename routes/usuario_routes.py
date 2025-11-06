@@ -2,10 +2,10 @@ from flask import Blueprint, request, jsonify
 from services.usuario_service import UsuarioService
 from flask_jwt_extended import jwt_required
 from utils.protect import protect_blueprint
-protect_blueprint(usuario_bp)
-
 
 usuario_bp = Blueprint('usuarios', __name__)
+
+protect_blueprint(usuario_bp)
 
 # DELETE - Remover usuário
 @usuario_bp.route('/usuarios/<int:id>', methods=['DELETE'])

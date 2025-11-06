@@ -36,5 +36,20 @@ def main():
     conn.close()
     print("✅ Senhas temporárias adicionadas (hashadas com bcrypt).")
 
+def get_connection():
+    """Cria e retorna uma conexão com o banco SQLite."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def close_connection(app):
+    """Fecha a conexão com o banco após cada requisição."""
+    @app.teardown_appcontext
+    def close_db(exception):
+        conn = getattr(app, '_database', None)
+        if conn is not None:
+            conn.close()
+
+
 if __name__ == "__main__":
     main()
