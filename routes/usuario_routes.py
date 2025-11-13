@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify
 from services.usuario_service import UsuarioService
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from utils.protect import protect_blueprint
-from models.usuario_model import Usuario
 
 usuario_bp = Blueprint('usuarios', __name__)
 
