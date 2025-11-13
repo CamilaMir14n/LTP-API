@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from services.filho_service import FilhoService
-from flask_jwt_extended import jwt_required   # ✅ import necessário
+from flask_jwt_extended import jwt_required , get_jwt_identity
 
 filho_bp = Blueprint('filhos', __name__)
 
@@ -18,6 +18,28 @@ def criar_filho():
         return jsonify({"error": err, "message": "Usuário inválido"}), 400
     return jsonify(filho.to_dict()), 201
 
+filho_bp.route('/filhos', methods=['POST'])
+@jwt_required()
+def criar_filho():
+    data = request.get_json()
+    usuario_id = data.get('usuario_id')
+    nome = data.get('nome')
+    idade = data.get('idade')
+
+    if not usuario_id or not nome:
+        return jsonify({
+            "error": "FIL002",
+            "message": "usuario_id e nome são obrigatórios"
+        }), 400
+
+    filho, err = FilhoService.criar_filho(usuario_id, nome, idade)
+    if err:
+        return jsonify({
+            "error": err,
+            "message": "Usuário inválido"
+        }), 400
+
+    return jsonify(filho.to_dict()), 201
 
 @filho_bp.route('/filhos', methods=['GET'])
 @jwt_required()
