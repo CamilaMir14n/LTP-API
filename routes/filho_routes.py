@@ -4,7 +4,7 @@ from flask_jwt_extended import jwt_required , get_jwt_identity
 
 filho_bp = Blueprint('filhos', __name__,  url_prefix='/filhos')
 
-@filho_bp.route('/filhos', methods=['POST'])
+@filho_bp.route('', methods=['POST'])
 @jwt_required()
 def criar_filho():
     data = request.get_json()
@@ -29,7 +29,7 @@ def criar_filho():
 
 
 # Criar filho vinculado ao usuário logado (sem enviar usuario_id)
-@filho_bp.route('/filhos/meus', methods=['POST'])
+@filho_bp.route('/meus', methods=['POST'])
 @jwt_required()
 def criar_filho_autenticado():
     data = request.get_json()
@@ -52,7 +52,7 @@ def criar_filho_autenticado():
 
     return jsonify(filho.to_dict()), 201
 
-@filho_bp.route('/filhos', methods=['GET'])
+@filho_bp.route('', methods=['GET'])
 @jwt_required()
 def listar_filhos():
     usuario_id = request.args.get('usuario')
@@ -62,7 +62,7 @@ def listar_filhos():
     return jsonify({"error": "FIL003", "message": "Parâmetro usuario é necessário"}), 400
 
 
-@filho_bp.route('/filhos/<int:id>', methods=['GET'])
+@filho_bp.route('/<int:id>', methods=['GET'])
 @jwt_required()
 def buscar_filho(id):
     f = FilhoService.buscar_filho(id)
