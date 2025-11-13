@@ -1,32 +1,29 @@
 type: collection.insomnia.rest/5.0
 name: Artistick API - Autenticação JWT
 meta:
-  id: wrk_f17abcfd706e47b98209bd59a09b97b1
-  created: 1763046984112
-  modified: 1763046984112
-  description: ""
+  id: wrk_5a1c7c582ced47628ed2148d2234f199
+  created: 1763071753994
+  modified: 1763071753994
 collection:
   - name: usuario
     meta:
-      id: fld_39f55dc76b0a4ca291b9b7148aac89a6
+      id: fld_b92a95057774474b8cd8313c273559e1
       created: 1763047079246
       modified: 1763047079246
       sortKey: -1763047079246
-      description: ""
     children:
       - url: "{{ _.url }}/auth/register"
         name: Registrar Usuário (/auth/register)
         meta:
-          id: req_188303352e54415b9c68883e1d19fd4f
+          id: req_e9bbdae5e69e4ae18863595f0e2c43e9
           created: 1762987449957
-          modified: 1763051079977
+          modified: 1763073638322
           isPrivate: false
-          description: ""
           sortKey: -1763047100384
         method: POST
         body:
           mimeType: application/json
-          text: '{"nome": "Teste2", "email": "teste2@ifsp.edu.br", "password": "0987652"}'
+          text: '{"nome": "Teste4", "email": "teste4@ifsp.edu.br", "password": "0987654"}'
         headers:
           - name: Content-Type
             value: application/json
@@ -41,16 +38,15 @@ collection:
       - url: "{{ _.url }}/auth/login"
         name: Login com Senha Incorreta (/auth/login)
         meta:
-          id: req_a843c963779a4067a2d290cdff89cd58
+          id: req_127cc14a83944560bda28054de2b6bc7
           created: 1762987449972
-          modified: 1763047112333
+          modified: 1763074163453
           isPrivate: false
-          description: ""
           sortKey: -1763047100284
         method: POST
         body:
           mimeType: application/json
-          text: '{"email": "teste@ifsp.edu.br", "password": "senha_errada"}'
+          text: '{"email": "teste4@ifsp.edu.br", "password": "senha_errada"}'
         headers:
           - name: Content-Type
             value: application/json
@@ -65,16 +61,15 @@ collection:
       - url: "{{ _.url }}/auth/login"
         name: Login Correto (/auth/login)
         meta:
-          id: req_3052b946143948d5ac06effc46f0b65e
+          id: req_cab7579727fe4c76bbbe5e3861a8942f
           created: 1762987449974
-          modified: 1763051099402
+          modified: 1763073680532
           isPrivate: false
-          description: ""
           sortKey: -1763047100484
         method: POST
         body:
           mimeType: application/json
-          text: '{"email": "teste2@ifsp.edu.br", "password": "0987652"}'
+          text: '{"email": "teste4@ifsp.edu.br", "password": "0987654"}'
         headers:
           - name: Content-Type
             value: application/json
@@ -89,11 +84,10 @@ collection:
       - url: "{{ _.url }}/usuarios"
         name: Acesso sem Token (/usuarios)
         meta:
-          id: req_3e9d9a79fbf14a1e8b5fc4e2fac82f21
+          id: req_42763f3e5358457199ea78fdbbc7fc94
           created: 1762987449977
           modified: 1763047102538
           isPrivate: false
-          description: ""
           sortKey: -1763047099984
         method: GET
         settings:
@@ -107,18 +101,17 @@ collection:
       - url: "{{ _.url }}/usuarios"
         name: Acesso com Token (/usuarios)
         meta:
-          id: req_58353c7457f945a9bd25e43da110c899
+          id: req_a1f1cfc84e864c7b828e49a540066b87
           created: 1762987449980
-          modified: 1763051556907
+          modified: 1763074426687
           isPrivate: false
-          description: ""
           sortKey: -1763047100184
         method: GET
         headers:
           - name: Authorization
             value: Bearer
-              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzA1MTUyOSwianRpIjoiZGQ1ZDNiNjEtYmE2ZS00NzNiLTk0NDAtNjQ4NGY3NGMwNjI2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NSwibmJmIjoxNzYzMDUxNTI5LCJjc3JmIjoiMjRjZjVjMmEtMWYzNC00MTlhLTg2YTgtZTg2ZjAxZWE1ZTAzIiwiZXhwIjoxNzYzMDU1MTI5fQ.RKpevG3DleVifKzgK8aWncliDPeO59u9ugsTO3ECyVA
-            id: pair_63cc5fd0279a4b6fa7337de3d817d3aa
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzA3NDI2NCwianRpIjoiOWI4Mjc5OGItMTNjMi00YzcyLTk1NGYtNDUzNjc2OGExMjMwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjUiLCJuYmYiOjE3NjMwNzQyNjQsImNzcmYiOiJlZmZjMWMyZC1jM2I5LTQ2NjgtODBlNS0xNmM3NGJlOWIwOTciLCJleHAiOjE3NjMwNzc4NjR9.lGsf1PACrwsz2-n08rOxYuE17xseu3T2tUQELxpfhgA
+            id: pair_5f66d8dd464a49ae9e2c2378f9a44734
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -130,17 +123,17 @@ collection:
       - url: "{{ _.url }}/auth/logout"
         name: Logout (/auth/logout)
         meta:
-          id: req_e15c135c5a4f411f9a399e3a1bc070e2
+          id: req_bc51eae3cbdc4a3e9d77ad200351348d
           created: 1762987449983
-          modified: 1763047099908
+          modified: 1763074575324
           isPrivate: false
-          description: ""
           sortKey: -1763047099884
         method: POST
         headers:
           - name: Authorization
             value: Bearer
-              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4NzgwNiwianRpIjoiZjQ5ODQ5NjctYjNlZi00NTI2LWI2ZTctOGEwYzEwZTQwZDY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg3ODA2LCJjc3JmIjoiOTM5M2U5NTktMmI0Zi00OGQ3LTk3ODYtZmM0NDc5ODY5Mzk0IiwiZXhwIjoxNzYyOTkxNDA2fQ.bki5Rh8T2B7LagTsBHRowN6lZSlFN5m1TRE1ypZebcA
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzA3NDI2NCwianRpIjoiOWI4Mjc5OGItMTNjMi00YzcyLTk1NGYtNDUzNjc2OGExMjMwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjUiLCJuYmYiOjE3NjMwNzQyNjQsImNzcmYiOiJlZmZjMWMyZC1jM2I5LTQ2NjgtODBlNS0xNmM3NGJlOWIwOTciLCJleHAiOjE3NjMwNzc4NjR9.lGsf1PACrwsz2-n08rOxYuE17xseu3T2tUQELxpfhgA
+            id: pair_23881f543b2742618c93eb7a7cac230b
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -152,96 +145,17 @@ collection:
       - url: "{{ _.url }}/usuarios"
         name: Teste Token Revogado (/usuarios)
         meta:
-          id: req_5de1bed551044343a739a8250e25ec96
+          id: req_f6c09dbd80c949d8be566e054b1c02ab
           created: 1762987449985
-          modified: 1763047104859
+          modified: 1763074649111
           isPrivate: false
-          description: ""
           sortKey: -1763047100084
         method: GET
         headers:
           - name: Authorization
             value: Bearer
-              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4NzgwNiwianRpIjoiZjQ5ODQ5NjctYjNlZi00NTI2LWI2ZTctOGEwYzEwZTQwZDY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg3ODA2LCJjc3JmIjoiOTM5M2U5NTktMmI0Zi00OGQ3LTk3ODYtZmM0NDc5ODY5Mzk0IiwiZXhwIjoxNzYyOTkxNDA2fQ.bki5Rh8T2B7LagTsBHRowN6lZSlFN5m1TRE1ypZebcA
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-  - name: atividade
-    meta:
-      id: fld_1e97092fd1b645d397c9e7f9e90bdbdd
-      created: 1763047128446
-      modified: 1763047133892
-      sortKey: -1763047128446
-      description: ""
-    children:
-      - url: "{{ _.url }}/atividade/"
-        name: Adicionando atividade
-        meta:
-          id: req_ae732d454a20473194cd958331fd270c
-          created: 1763047146694
-          modified: 1763047481754
-          isPrivate: false
-          description: ""
-          sortKey: -1763047149572
-        method: POST
-        body:
-          mimeType: application/json
-          text: >-
-            {
-            	"filho_id": 2,
-            	"titulo": "Ler um livro",
-              "descricao": "Leia um livro de sua estante e depois faça um resumo do que você entendeu",
-              "status" : "pendente"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/12.0.0
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-  - name: filho
-    meta:
-      id: fld_8824080ba4ac4758b2dc620b5af11e5f
-      created: 1763047592152
-      modified: 1763047592152
-      sortKey: -1763047592152
-      description: ""
-    children:
-      - url: "{{ _.url }}/filho"
-        name: adicionar filho
-        meta:
-          id: req_719bfaf91c744e88b4eb8ea303b2f9e4
-          created: 1763047594806
-          modified: 1763049021917
-          isPrivate: false
-          description: ""
-          sortKey: -1763047615077
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-            	"usuario_id" : "5",
-            	"nome" : "Maria",
-            	"idade" : "7"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/12.0.0
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzA3NDI2NCwianRpIjoiOWI4Mjc5OGItMTNjMi00YzcyLTk1NGYtNDUzNjc2OGExMjMwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjUiLCJuYmYiOjE3NjMwNzQyNjQsImNzcmYiOiJlZmZjMWMyZC1jM2I5LTQ2NjgtODBlNS0xNmM3NGJlOWIwOTciLCJleHAiOjE3NjMwNzc4NjR9.lGsf1PACrwsz2-n08rOxYuE17xseu3T2tUQELxpfhgA
+            id: pair_5f6cb22b2a7a45f58d5a537bccf92a5b
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -253,13 +167,13 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_5b14ba0db2b449d69936904e91d73bc6
+    id: jar_b6df9055f4a84faa88ceb7f358dfc785
     created: 1762987450010
     modified: 1762987450010
 environments:
   name: Base Environment
   meta:
-    id: env_8e6fc816b2b0421e947340953fda5390
+    id: env_074224597a0b47a78fcc7d525fcec389
     created: 1762987449987
     modified: 1763047063410
     isPrivate: false
