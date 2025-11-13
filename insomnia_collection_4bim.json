@@ -1,174 +1,267 @@
 type: collection.insomnia.rest/5.0
 name: Artistick API - Autenticação JWT
 meta:
-  id: wrk_11f2cdea68f64604a059b9c845a6aebc
-  created: 1762987449936
-  modified: 1762987449936
+  id: wrk_f17abcfd706e47b98209bd59a09b97b1
+  created: 1763046984112
+  modified: 1763046984112
+  description: ""
 collection:
-  - url: "{{ _.url }}/auth/register"
-    name: Registrar Usuário (/auth/register)
+  - name: usuario
     meta:
-      id: req_ce39f3832b8f4cdaa00cd74c60fd9a91
-      created: 1762987449957
-      modified: 1762990625777
-      isPrivate: false
-      sortKey: -1762987449957
-    method: POST
-    body:
-      mimeType: application/json
-      text: '{"nome": "Teste", "email": "teste@ifsp.edu.br", "password": "098765"}'
-    headers:
-      - name: Content-Type
-        value: application/json
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: "{{ _.url }}/auth/login"
-    name: Login com Senha Incorreta (/auth/login)
+      id: fld_39f55dc76b0a4ca291b9b7148aac89a6
+      created: 1763047079246
+      modified: 1763047079246
+      sortKey: -1763047079246
+      description: ""
+    children:
+      - url: "{{ _.url }}/auth/register"
+        name: Registrar Usuário (/auth/register)
+        meta:
+          id: req_188303352e54415b9c68883e1d19fd4f
+          created: 1762987449957
+          modified: 1763051079977
+          isPrivate: false
+          description: ""
+          sortKey: -1763047100384
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"nome": "Teste2", "email": "teste2@ifsp.edu.br", "password": "0987652"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/auth/login"
+        name: Login com Senha Incorreta (/auth/login)
+        meta:
+          id: req_a843c963779a4067a2d290cdff89cd58
+          created: 1762987449972
+          modified: 1763047112333
+          isPrivate: false
+          description: ""
+          sortKey: -1763047100284
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"email": "teste@ifsp.edu.br", "password": "senha_errada"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/auth/login"
+        name: Login Correto (/auth/login)
+        meta:
+          id: req_3052b946143948d5ac06effc46f0b65e
+          created: 1762987449974
+          modified: 1763051099402
+          isPrivate: false
+          description: ""
+          sortKey: -1763047100484
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"email": "teste2@ifsp.edu.br", "password": "0987652"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios"
+        name: Acesso sem Token (/usuarios)
+        meta:
+          id: req_3e9d9a79fbf14a1e8b5fc4e2fac82f21
+          created: 1762987449977
+          modified: 1763047102538
+          isPrivate: false
+          description: ""
+          sortKey: -1763047099984
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios"
+        name: Acesso com Token (/usuarios)
+        meta:
+          id: req_58353c7457f945a9bd25e43da110c899
+          created: 1762987449980
+          modified: 1763051556907
+          isPrivate: false
+          description: ""
+          sortKey: -1763047100184
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzA1MTUyOSwianRpIjoiZGQ1ZDNiNjEtYmE2ZS00NzNiLTk0NDAtNjQ4NGY3NGMwNjI2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NSwibmJmIjoxNzYzMDUxNTI5LCJjc3JmIjoiMjRjZjVjMmEtMWYzNC00MTlhLTg2YTgtZTg2ZjAxZWE1ZTAzIiwiZXhwIjoxNzYzMDU1MTI5fQ.RKpevG3DleVifKzgK8aWncliDPeO59u9ugsTO3ECyVA
+            id: pair_63cc5fd0279a4b6fa7337de3d817d3aa
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/auth/logout"
+        name: Logout (/auth/logout)
+        meta:
+          id: req_e15c135c5a4f411f9a399e3a1bc070e2
+          created: 1762987449983
+          modified: 1763047099908
+          isPrivate: false
+          description: ""
+          sortKey: -1763047099884
+        method: POST
+        headers:
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4NzgwNiwianRpIjoiZjQ5ODQ5NjctYjNlZi00NTI2LWI2ZTctOGEwYzEwZTQwZDY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg3ODA2LCJjc3JmIjoiOTM5M2U5NTktMmI0Zi00OGQ3LTk3ODYtZmM0NDc5ODY5Mzk0IiwiZXhwIjoxNzYyOTkxNDA2fQ.bki5Rh8T2B7LagTsBHRowN6lZSlFN5m1TRE1ypZebcA
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios"
+        name: Teste Token Revogado (/usuarios)
+        meta:
+          id: req_5de1bed551044343a739a8250e25ec96
+          created: 1762987449985
+          modified: 1763047104859
+          isPrivate: false
+          description: ""
+          sortKey: -1763047100084
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4NzgwNiwianRpIjoiZjQ5ODQ5NjctYjNlZi00NTI2LWI2ZTctOGEwYzEwZTQwZDY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg3ODA2LCJjc3JmIjoiOTM5M2U5NTktMmI0Zi00OGQ3LTk3ODYtZmM0NDc5ODY5Mzk0IiwiZXhwIjoxNzYyOTkxNDA2fQ.bki5Rh8T2B7LagTsBHRowN6lZSlFN5m1TRE1ypZebcA
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: atividade
     meta:
-      id: req_0f3a74ec9ee84a22aedb5dca297eb4cf
-      created: 1762987449972
-      modified: 1762994709678
-      isPrivate: false
-      sortKey: -1762987449972
-    method: POST
-    body:
-      mimeType: application/json
-      text: '{"email": "teste@ifsp.edu.br", "password": "senha_errada"}'
-    headers:
-      - name: Content-Type
-        value: application/json
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: "{{ _.url }}/auth/login"
-    name: Login Correto (/auth/login)
+      id: fld_1e97092fd1b645d397c9e7f9e90bdbdd
+      created: 1763047128446
+      modified: 1763047133892
+      sortKey: -1763047128446
+      description: ""
+    children:
+      - url: "{{ _.url }}/atividade/"
+        name: Adicionando atividade
+        meta:
+          id: req_ae732d454a20473194cd958331fd270c
+          created: 1763047146694
+          modified: 1763047481754
+          isPrivate: false
+          description: ""
+          sortKey: -1763047149572
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"filho_id": 2,
+            	"titulo": "Ler um livro",
+              "descricao": "Leia um livro de sua estante e depois faça um resumo do que você entendeu",
+              "status" : "pendente"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: filho
     meta:
-      id: req_f23e74e72e5c4171ada42886e9c9b0a5
-      created: 1762987449974
-      modified: 1762994728288
-      isPrivate: false
-      sortKey: -1762987449974
-    method: POST
-    body:
-      mimeType: application/json
-      text: '{"email": "teste@ifsp.edu.br", "password": "098765"}'
-    headers:
-      - name: Content-Type
-        value: application/json
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: "{{ _.url }}/usuarios"
-    name: Acesso sem Token (/usuarios)
-    meta:
-      id: req_35ab25161ac44cd99616c63263506588
-      created: 1762987449977
-      modified: 1762987653456
-      isPrivate: false
-      sortKey: -1762987449977
-    method: GET
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: "{{ _.url }}/usuarios"
-    name: Acesso com Token (/usuarios)
-    meta:
-      id: req_a077c56f808e474584506b48a158d309
-      created: 1762987449980
-      modified: 1762989750885
-      isPrivate: false
-      sortKey: -1762987449980
-    method: GET
-    headers:
-      - name: Authorization
-        value: Bearer
-          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4OTcyNCwianRpIjoiODA5N2FjZTgtY2YxOC00ZDVkLTk5OTgtY2NjY2UyOGRkNmVhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg5NzI0LCJjc3JmIjoiMjE1ZmExOTQtOWUyNy00NDVhLTg4YmUtYzViOWY5YzhjNDRlIiwiZXhwIjoxNzYyOTkzMzI0fQ.-mrkeIOMi7WjPykhbBFiEvxOoYmZtPFBZouLBS0kw8I
-        id: pair_36f71a1f695a4e93be8fad2fff392ed9
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: "{{ _.url }}/auth/logout"
-    name: Logout (/auth/logout)
-    meta:
-      id: req_1e4181055cf5499ab00afc2e3551dec6
-      created: 1762987449983
-      modified: 1762987853836
-      isPrivate: false
-      sortKey: -1762987449983
-    method: POST
-    headers:
-      - name: Authorization
-        value: Bearer
-          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4NzgwNiwianRpIjoiZjQ5ODQ5NjctYjNlZi00NTI2LWI2ZTctOGEwYzEwZTQwZDY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg3ODA2LCJjc3JmIjoiOTM5M2U5NTktMmI0Zi00OGQ3LTk3ODYtZmM0NDc5ODY5Mzk0IiwiZXhwIjoxNzYyOTkxNDA2fQ.bki5Rh8T2B7LagTsBHRowN6lZSlFN5m1TRE1ypZebcA
-        id: pair_149eb54552154ad09d20289ce1d50a74
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: "{{ _.url }}/usuarios"
-    name: Teste Token Revogado (/usuarios)
-    meta:
-      id: req_3f5a8bb5078c4e989cab49f75ed64799
-      created: 1762987449985
-      modified: 1762987864423
-      isPrivate: false
-      sortKey: -1762987449985
-    method: GET
-    headers:
-      - name: Authorization
-        value: Bearer
-          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4NzgwNiwianRpIjoiZjQ5ODQ5NjctYjNlZi00NTI2LWI2ZTctOGEwYzEwZTQwZDY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg3ODA2LCJjc3JmIjoiOTM5M2U5NTktMmI0Zi00OGQ3LTk3ODYtZmM0NDc5ODY5Mzk0IiwiZXhwIjoxNzYyOTkxNDA2fQ.bki5Rh8T2B7LagTsBHRowN6lZSlFN5m1TRE1ypZebcA
-        id: pair_1fc6497ac8e442efa946757d062149be
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
+      id: fld_8824080ba4ac4758b2dc620b5af11e5f
+      created: 1763047592152
+      modified: 1763047592152
+      sortKey: -1763047592152
+      description: ""
+    children:
+      - url: "{{ _.url }}/filho"
+        name: adicionar filho
+        meta:
+          id: req_719bfaf91c744e88b4eb8ea303b2f9e4
+          created: 1763047594806
+          modified: 1763049021917
+          isPrivate: false
+          description: ""
+          sortKey: -1763047615077
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"usuario_id" : "5",
+            	"nome" : "Maria",
+            	"idade" : "7"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_6df8b6da23f2c801052c84e437b8df94b853f5b9
+    id: jar_5b14ba0db2b449d69936904e91d73bc6
     created: 1762987450010
     modified: 1762987450010
 environments:
   name: Base Environment
   meta:
-    id: env_fccc03da59bf41d484f88bdbdd518042
+    id: env_8e6fc816b2b0421e947340953fda5390
     created: 1762987449987
-    modified: 1762989672732
+    modified: 1763047063410
     isPrivate: false
   data:
     url: https://ltp-api.onrender.com
