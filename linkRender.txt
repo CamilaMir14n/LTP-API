@@ -1,0 +1,2 @@
+Link do render: https://ltp-api.onrender.com
+Link do GitHub: https://github.com/CamilaMir14n/LTP-API/
