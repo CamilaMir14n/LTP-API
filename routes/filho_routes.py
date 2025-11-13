@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from services.filho_service import FilhoService
 from flask_jwt_extended import jwt_required , get_jwt_identity
 
-filho_bp = Blueprint('filhos', __name__)
+filho_bp = Blueprint('filhos', __name__,  url_prefix='/filhos')
 
 @filho_bp.route('/filhos', methods=['POST'])
 @jwt_required()
@@ -28,7 +28,7 @@ def criar_filho():
     return jsonify(filho.to_dict()), 201
 
 
-# ✅ Criar filho vinculado ao usuário logado (sem enviar usuario_id)
+# Criar filho vinculado ao usuário logado (sem enviar usuario_id)
 @filho_bp.route('/filhos/meus', methods=['POST'])
 @jwt_required()
 def criar_filho_autenticado():
