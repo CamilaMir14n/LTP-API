@@ -35,7 +35,7 @@ def login():
     if not user or not bcrypt.check_password_hash(user.password, password):
         return jsonify({'msg': 'credenciais inválidas'}), 401
     expires = datetime.timedelta(seconds=current_app.config.get('JWT_ACCESS_TOKEN_EXPIRES', 3600))
-    access_token = create_access_token(identity=user.id, expires_delta=expires)
+    access_token = create_access_token(identity=str(user.id), expires_delta=expires)
     return jsonify({'access_token': access_token}), 200
 
 @auth_bp.route('/logout', methods=['POST'])
@@ -48,10 +48,13 @@ def logout():
 @auth_bp.route('/me', methods=['GET'])
 @jwt_required()
 def me():
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
+
     user = UsuarioDAO.buscar_por_id(user_id)
+    
     if not user:
         return jsonify({'msg': 'usuário não encontrado'}), 404
+    
     return jsonify(user.to_dict()), 200
 
 def is_token_revoked(jwt_header, jwt_payload):
