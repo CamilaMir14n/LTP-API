@@ -1,110 +1,174 @@
-{
-  "_type": "export",
-  "__export_format": 4,
-  "__export_date": "2025-10-29T00:00:00.000Z",
-  "__export_source": "artistick_api_auth",
-  "resources": [
-    {
-      "_id": "__WORKSPACE__",
-      "_type": "workspace",
-      "name": "Artistick API - Autenticação JWT"
-    },
-    {
-      "_id": "req_register_user",
-      "_type": "request",
-      "parentId": "__WORKSPACE__",
-      "name": "Registrar Usuário (/auth/register)",
-      "method": "POST",
-      "url": "http://127.0.0.1:5000/auth/register",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\"nome\": \"Camila\", \"email\": \"camila@ifsp.edu.br\", \"password\": \"123456\"}"
-      },
-      "headers": [
-        { "name": "Content-Type", "value": "application/json" }
-      ]
-    },
-    {
-      "_id": "req_login_wrong",
-      "_type": "request",
-      "parentId": "__WORKSPACE__",
-      "name": "Login com Senha Incorreta (/auth/login)",
-      "method": "POST",
-      "url": "http://127.0.0.1:5000/auth/login",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\"email\": \"camila@ifsp.edu.br\", \"password\": \"senha_errada\"}"
-      },
-      "headers": [
-        { "name": "Content-Type", "value": "application/json" }
-      ]
-    },
-    {
-      "_id": "req_login_correct",
-      "_type": "request",
-      "parentId": "__WORKSPACE__",
-      "name": "Login Correto (/auth/login)",
-      "method": "POST",
-      "url": "http://127.0.0.1:5000/auth/login",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\"email\": \"camila@ifsp.edu.br\", \"password\": \"123456\"}"
-      },
-      "headers": [
-        { "name": "Content-Type", "value": "application/json" }
-      ]
-    },
-    {
-      "_id": "req_protected_no_token",
-      "_type": "request",
-      "parentId": "__WORKSPACE__",
-      "name": "Acesso sem Token (/usuarios)",
-      "method": "GET",
-      "url": "http://127.0.0.1:5000/usuarios",
-      "headers": []
-    },
-    {
-      "_id": "req_protected_with_token",
-      "_type": "request",
-      "parentId": "__WORKSPACE__",
-      "name": "Acesso com Token (/usuarios)",
-      "method": "GET",
-      "url": "http://127.0.0.1:5000/usuarios",
-      "headers": [
-        { "name": "Authorization", "value": "Bearer {{ access_token }}" }
-      ]
-    },
-    {
-      "_id": "req_logout",
-      "_type": "request",
-      "parentId": "__WORKSPACE__",
-      "name": "Logout (/auth/logout)",
-      "method": "POST",
-      "url": "http://127.0.0.1:5000/auth/logout",
-      "headers": [
-        { "name": "Authorization", "value": "Bearer {{ access_token }}" }
-      ]
-    },
-    {
-      "_id": "req_reuse_token",
-      "_type": "request",
-      "parentId": "__WORKSPACE__",
-      "name": "Teste Token Revogado (/usuarios)",
-      "method": "GET",
-      "url": "http://127.0.0.1:5000/usuarios",
-      "headers": [
-        { "name": "Authorization", "value": "Bearer {{ access_token }}" }
-      ]
-    },
-    {
-      "_id": "env_base",
-      "_type": "environment",
-      "parentId": "__WORKSPACE__",
-      "name": "Base Environment",
-      "data": {
-        "url": "http://127.0.0.1:5000",
-        "access_token": ""
-      }
-    }
-  ]
-}
+type: collection.insomnia.rest/5.0
+name: Artistick API - Autenticação JWT
+meta:
+  id: wrk_11f2cdea68f64604a059b9c845a6aebc
+  created: 1762987449936
+  modified: 1762987449936
+collection:
+  - url: "{{ _.url }}/auth/register"
+    name: Registrar Usuário (/auth/register)
+    meta:
+      id: req_ce39f3832b8f4cdaa00cd74c60fd9a91
+      created: 1762987449957
+      modified: 1762990625777
+      isPrivate: false
+      sortKey: -1762987449957
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"nome": "Teste", "email": "teste@ifsp.edu.br", "password": "098765"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url }}/auth/login"
+    name: Login com Senha Incorreta (/auth/login)
+    meta:
+      id: req_0f3a74ec9ee84a22aedb5dca297eb4cf
+      created: 1762987449972
+      modified: 1762994709678
+      isPrivate: false
+      sortKey: -1762987449972
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"email": "teste@ifsp.edu.br", "password": "senha_errada"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url }}/auth/login"
+    name: Login Correto (/auth/login)
+    meta:
+      id: req_f23e74e72e5c4171ada42886e9c9b0a5
+      created: 1762987449974
+      modified: 1762994728288
+      isPrivate: false
+      sortKey: -1762987449974
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"email": "teste@ifsp.edu.br", "password": "098765"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url }}/usuarios"
+    name: Acesso sem Token (/usuarios)
+    meta:
+      id: req_35ab25161ac44cd99616c63263506588
+      created: 1762987449977
+      modified: 1762987653456
+      isPrivate: false
+      sortKey: -1762987449977
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url }}/usuarios"
+    name: Acesso com Token (/usuarios)
+    meta:
+      id: req_a077c56f808e474584506b48a158d309
+      created: 1762987449980
+      modified: 1762989750885
+      isPrivate: false
+      sortKey: -1762987449980
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4OTcyNCwianRpIjoiODA5N2FjZTgtY2YxOC00ZDVkLTk5OTgtY2NjY2UyOGRkNmVhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg5NzI0LCJjc3JmIjoiMjE1ZmExOTQtOWUyNy00NDVhLTg4YmUtYzViOWY5YzhjNDRlIiwiZXhwIjoxNzYyOTkzMzI0fQ.-mrkeIOMi7WjPykhbBFiEvxOoYmZtPFBZouLBS0kw8I
+        id: pair_36f71a1f695a4e93be8fad2fff392ed9
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url }}/auth/logout"
+    name: Logout (/auth/logout)
+    meta:
+      id: req_1e4181055cf5499ab00afc2e3551dec6
+      created: 1762987449983
+      modified: 1762987853836
+      isPrivate: false
+      sortKey: -1762987449983
+    method: POST
+    headers:
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4NzgwNiwianRpIjoiZjQ5ODQ5NjctYjNlZi00NTI2LWI2ZTctOGEwYzEwZTQwZDY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg3ODA2LCJjc3JmIjoiOTM5M2U5NTktMmI0Zi00OGQ3LTk3ODYtZmM0NDc5ODY5Mzk0IiwiZXhwIjoxNzYyOTkxNDA2fQ.bki5Rh8T2B7LagTsBHRowN6lZSlFN5m1TRE1ypZebcA
+        id: pair_149eb54552154ad09d20289ce1d50a74
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url }}/usuarios"
+    name: Teste Token Revogado (/usuarios)
+    meta:
+      id: req_3f5a8bb5078c4e989cab49f75ed64799
+      created: 1762987449985
+      modified: 1762987864423
+      isPrivate: false
+      sortKey: -1762987449985
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2Mjk4NzgwNiwianRpIjoiZjQ5ODQ5NjctYjNlZi00NTI2LWI2ZTctOGEwYzEwZTQwZDY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NCwibmJmIjoxNzYyOTg3ODA2LCJjc3JmIjoiOTM5M2U5NTktMmI0Zi00OGQ3LTk3ODYtZmM0NDc5ODY5Mzk0IiwiZXhwIjoxNzYyOTkxNDA2fQ.bki5Rh8T2B7LagTsBHRowN6lZSlFN5m1TRE1ypZebcA
+        id: pair_1fc6497ac8e442efa946757d062149be
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_6df8b6da23f2c801052c84e437b8df94b853f5b9
+    created: 1762987450010
+    modified: 1762987450010
+environments:
+  name: Base Environment
+  meta:
+    id: env_fccc03da59bf41d484f88bdbdd518042
+    created: 1762987449987
+    modified: 1762989672732
+    isPrivate: false
+  data:
+    url: https://ltp-api.onrender.com
