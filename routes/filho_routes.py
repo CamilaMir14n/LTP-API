@@ -11,20 +11,6 @@ def criar_filho():
     usuario_id = data.get('usuario_id')
     nome = data.get('nome')
     idade = data.get('idade')
-    if not usuario_id or not nome:
-        return jsonify({"error": "FIL002", "message": "usuario_id e nome são obrigatórios"}), 400
-    filho, err = FilhoService.criar_filho(usuario_id, nome, idade)
-    if err:
-        return jsonify({"error": err, "message": "Usuário inválido"}), 400
-    return jsonify(filho.to_dict()), 201
-
-filho_bp.route('/filhos', methods=['POST'])
-@jwt_required()
-def criar_filho():
-    data = request.get_json()
-    usuario_id = data.get('usuario_id')
-    nome = data.get('nome')
-    idade = data.get('idade')
 
     if not usuario_id or not nome:
         return jsonify({
@@ -37,6 +23,31 @@ def criar_filho():
         return jsonify({
             "error": err,
             "message": "Usuário inválido"
+        }), 400
+
+    return jsonify(filho.to_dict()), 201
+
+
+# ✅ Criar filho vinculado ao usuário logado (sem enviar usuario_id)
+@filho_bp.route('/filhos/meus', methods=['POST'])
+@jwt_required()
+def criar_filho_autenticado():
+    data = request.get_json()
+    nome = data.get('nome')
+    idade = data.get('idade')
+
+    if not nome:
+        return jsonify({
+            "error": "FIL001",
+            "message": "O nome do filho é obrigatório"
+        }), 400
+
+    usuario_id = get_jwt_identity()
+    filho, err = FilhoService.criar_filho(usuario_id, nome, idade)
+    if err:
+        return jsonify({
+            "error": err,
+            "message": "Erro ao criar filho"
         }), 400
 
     return jsonify(filho.to_dict()), 201
