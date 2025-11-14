@@ -5,10 +5,12 @@ from routes.filho_routes import filho_bp
 from routes.atividade_routes import atividade_bp
 from routes.auth_routes import auth_bp, is_token_revoked
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 import os
 
 def create_app():
     app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}})
     app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'chave-padrao-local')
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 3600
     app.register_blueprint(auth_bp, url_prefix='/auth')
